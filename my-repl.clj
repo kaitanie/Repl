@@ -48,6 +48,10 @@
 
 (def history (atom {:place 0 :lines ["(in-ns 'user)"]}))
 
+(def IN (LinkedBlockingQueue.))
+
+(def OUT (LinkedBlockingQueue.))
+
 (defn window [in out]
   (let [here (JPanel.)
 	window (JFrame. "Clojure")
@@ -195,10 +199,6 @@
 (doc-filter
  (fn [bp offset string attr]
    (.insertString bp offset string attr)))
-
-(def IN (LinkedBlockingQueue.))
-
-(def OUT (LinkedBlockingQueue.))
 
 (window IN OUT)
 
